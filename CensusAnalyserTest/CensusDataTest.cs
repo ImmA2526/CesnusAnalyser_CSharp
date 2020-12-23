@@ -143,5 +143,57 @@ namespace CensusAnalyserTest
                 Assert.AreEqual("File Not Found", e.Message);
             }
         }
+
+        /// <summary>
+        /// 2.3 Givens the state Code file correct but type incorrect return exception.
+        /// </summary>
+
+        [Test]
+        public void GivenStateCodeFile_ThenReturnCustomException_InvalidFileType()
+        {
+            try
+            {
+                totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, wrongStateFileType, indianStateCodeHeader);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Assert.AreEqual("Invalid File Type", e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 2.4 Givens the state Code  file whencorrect but delimiter incorrect return exception.
+        /// </summary>
+
+        [Test]
+        public void GivenStateCode_FileWhencorrect_butDelimeterIncorrect_ReturnException()
+        {
+            try
+            {
+                totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, incorrectStateDelimeter, indianStateCodeHeader);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Assert.AreEqual("File Contains Wrong Delimiter", e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 2.5 Givens the state Code  file whencorrect but Header incorrect return exception.
+        /// </summary>
+
+        [Test]
+
+        public void GivenStateCode_FileWhencorrect_butHeaderIncorrect_ReturnException()
+        {
+            try
+            {
+                totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, stateHeaderIncorrect, indianStateCodeHeader);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Assert.AreEqual("Incorrect header in Data", e.Message);
+            }
+        }
     }
 }
