@@ -21,11 +21,20 @@ namespace CensusAnalyserTest
         IndianStateCensus_Analyser.DTO.CensusAnalyser censusAnalyser;
         Dictionary<string, CensusDTO> totalRecord;
 
+        static string indianStateCodeHeader = "SrNo,State,Name,Tin,StateCode";
+        static string statetPath= @"C:\Users\imran\Desktop\BRDLB_WORK\DOT_NET\IndianStateCensusDemo\CensusAnalyserTest\CSVFILES\ActualCensusData.csv"; 
+        static string stateFileNotFound = @"C:\Users\imran\Desktop\BRDLB_WORK\DOT_NET\IndianStateCensusDemo\CensusAnalyserTest\CSVFILES\ActualCensus_Wrong.csv";
+        static string wrongStateFileType = @"C:\Users\imran\Desktop\BRDLB_WORK\DOT_NET\IndianStateCensusDemo\CensusAnalyserTest\CSVFILES\ActualCensus.txt";
+        static string incorrectStateDelimeter = @"C:\Users\imran\Desktop\BRDLB_WORK\DOT_NET\IndianStateCensusDemo\CensusAnalyserTest\CSVFILES\IncorrectCensusDelimeter.csv";
+        static string stateHeaderIncorrect = @"C:\Users\imran\Desktop\BRDLB_WORK\DOT_NET\IndianStateCensusDemo\CensusAnalyserTest\CSVFILES\StateHeaderIncorect.csv";
+        Dictionary<string, CensusDTO> stateRecord;
+
         [SetUp]
         public void Setup()
         {
             censusAnalyser = new IndianStateCensus_Analyser.DTO.CensusAnalyser();
             totalRecord = new Dictionary<string, CensusDTO>();
+            stateRecord = new Dictionary<string, CensusDTO>();
         }
 
         /// <summary>
@@ -105,6 +114,17 @@ namespace CensusAnalyserTest
             { 
                 Assert.AreEqual("Incorrect header in Data", e.Message);    
             }
+        }
+
+        /// <summary>
+        /// 2.1 Givens the indian State Code data file when reade then should return State data count.
+        /// </summary>
+
+        [Test]
+        public void GivenIndianStateCodeDataFile_WhenReade_ThenShouldReturnStateDataCount()
+        {
+            stateRecord = censusAnalyser.LoadCensusData(Country.INDIA, statetPath, indianStateCodeHeader);
+            Assert.AreEqual(37, stateRecord.Count);
         }
     }
 }
