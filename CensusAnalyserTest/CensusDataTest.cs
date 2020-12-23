@@ -75,7 +75,7 @@ namespace CensusAnalyserTest
 
         /// <summary>
         /// 1.4 Givens the state census file whencorrect but delimiter incorrect return exception.
-        ///// </summary>
+        /// </summary>
 
         [Test]
         public void GivenStateCensus_FileWhencorrect_butDelimeterIncorrect_ReturnException()
