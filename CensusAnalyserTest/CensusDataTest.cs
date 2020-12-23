@@ -55,5 +55,56 @@ namespace CensusAnalyserTest
                 Assert.AreEqual("File Not Found", e.Message);
             }
         }
+
+        /// <summary>
+        /// 1.3 Givens the state census file correct but type incorrect return exception.
+        /// </summary>
+        
+        [Test]
+        public void GivenStateCensusFile_ThenReturnCustomException_InvalidFileType()
+        {
+            try
+            {
+                totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, wrongFileType, indianStateCensusHeaders);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Assert.AreEqual("Invalid File Type", e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 1.4 Givens the state census file whencorrect but delimiter incorrect return exception.
+        ///// </summary>
+
+        [Test]
+        public void GivenStateCensus_FileWhencorrect_butDelimeterIncorrect_ReturnException()
+        {
+            try
+            {
+                totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, incorrectDelimeter, indianStateCensusHeaders);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Assert.AreEqual("File Contains Wrong Delimiter", e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 1.5 Givens the state census file whencorrect but Header incorrect return exception.
+        /// </summary>
+
+        [Test]
+        public void GivenStateCensus_FileWhencorrect_butHeaderIncorrect_ReturnException()
+        {
+            try
+            {
+                totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, headerIncorrect, indianStateCensusHeaders);
+            }
+            catch(CensusAnalyserException e)
+            { 
+                Assert.AreEqual("Incorrect header in Data", e.Message);    
+            }
+        }
     }
 }
