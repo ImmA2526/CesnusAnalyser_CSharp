@@ -179,7 +179,7 @@ namespace CensusAnalyserTest
         }
 
         /// <summary>
-        /// 2.5 Givens the state Code  file whencorrect but Header incorrect return exception.
+        //// 2.5 Givens the state Code  file whencorrect but Header incorrect return exception.
         /// </summary>
 
         [Test]
