@@ -162,7 +162,7 @@ namespace CensusAnalyserTest
         }
 
         /// <summary>
-        /// 2.4 Givens the state Code  file whencorrect but delimiter incorrect return exception.
+        /// 2.4. Givens the state Code  file whencorrect but delimiter incorrect return exception.
         /// </summary>
 
         [Test]
